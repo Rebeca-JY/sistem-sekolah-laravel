@@ -39,9 +39,9 @@ Route::name('teachers.')->prefix('teachers')->group(function () {
 
     Route::get('/', [TeacherController::class, 'index'])->name('index');
 
-    Route::get('/{id}', [TeacherController::class, 'show'])->name('show');
-
     Route::get('/create', [TeacherController::class, 'create'])->name('create');
+    
+    Route::get('/{id}', [TeacherController::class, 'show'])->name('show');
 
     Route::get('/{id}/edit', [TeacherController::class, 'edit'])->name('edit');
 
@@ -56,9 +56,9 @@ Route::name('classes.')->prefix('classes')->group(function () {
 
     Route::get('/', IndexController::class)->name('index');
 
-    Route::get('/{id}', ShowController::class)->name('show');
-
     Route::get('/create', CreateController::class)->name('create');
+    
+    Route::get('/{id}', ShowController::class)->name('show');
 
     Route::get('/{id}/edit', EditController::class)->name('edit');
 
@@ -74,9 +74,9 @@ Route::name('majors.')->prefix('majors')->group(function () {
 
     Route::get('/', [MajorController::class, 'index'])->name('index');
 
-    Route::get('/create', [MajorController::class, 'create'])->name('create');
-
     Route::post('/store', [MajorController::class, 'store'])->name('store');
+    
+    Route::get('/create', [MajorController::class, 'create'])->name('create');
 
     Route::get('/{id}', [MajorController::class, 'show'])->name('show');
 
