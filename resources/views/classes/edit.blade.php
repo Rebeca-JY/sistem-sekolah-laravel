@@ -23,8 +23,13 @@
     <div>
         <label for="grade"
             class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Tingkat</label>
-        <input type="text" id="grade" name="grade" value="XII"
+        <select id="grade" name="grade"
             class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none">
+            <option value="">Pilih tingkat</option>
+            <option value="X" {{ (isset($class['grade']) && $class['grade'] == 'X') || old('grade') == 'X' ? 'selected' : '' }}>X</option>
+            <option value="XI" {{ (isset($class['grade']) && $class['grade'] == 'XI') || old('grade') == 'XI' ? 'selected' : '' }}>XI</option>
+            <option value="XII" {{ (isset($class['grade']) && $class['grade'] == 'XII') || old('grade') == 'XII' ? 'selected' : '' }}>XII</option>
+        </select>
     </div>
 
     <div>

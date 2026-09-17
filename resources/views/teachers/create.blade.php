@@ -42,19 +42,14 @@
     <div>
         <label for="subject"
             class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Mata Pelajaran</label>
-        <select id="subject" name="subject"
-            class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm focus:border-[#A16207] focus:bg-white focus:outline-none">
-            <option value="">Pilih mata pelajaran</option>
-            <option value="">Akuntansi Dasar</option>
-            <option value="">Jaringan Komputer</option>
-            <option value="">Pemrograman Web</option>
-        </select>
+        <input type="text" id="subject" name="subject" placeholder="Contoh: Pemrograman Web"
+            class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm placeholder:text-slate-400 focus:border-[#A16207] focus:bg-white focus:outline-none">
     </div>
 
     <div>
-        <label for="phone"
+        <label for="phone_number"
             class="mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-[#16213A]">Nomor Telepon</label>
-        <input type="text" id="phone" name="phone" placeholder="Contoh: 08123456789"
+        <input type="text" id="phone_number" name="phone_number" placeholder="Contoh: 08123456789"
             class="w-full border border-[#D9D6CD] bg-[#FCFBF8] px-3.5 py-2.5 text-sm placeholder:text-slate-400 focus:border-[#A16207] focus:bg-white focus:outline-none">
     </div>
 

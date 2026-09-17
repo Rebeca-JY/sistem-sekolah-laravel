@@ -4,9 +4,9 @@
 
 @section('content')
 
-<x-alert type="ERROR">
+<!-- <x-alert type="ERROR">
     Terdapat kesalahan ketika menambahkan data kelas baru ke dalam sistem sekolah   
-</x-alert>
+</x-alert> -->
 
 <div class="mb-8 flex items-end justify-between border-b border-[#E5E3DB] pb-5">
     <div>
