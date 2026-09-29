@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -60,9 +61,28 @@ class StudentController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        return "Melakukan penambahan data siswa";
+        //validsai
+        $request -> validate([
+            'nis' => ['required', 'string','size:4', 'unique:students,nis'],
+            'name' => ['required', 'string'],
+            'gender' => ['required', 'string', 'in:Laki-laki,Perempuan'],
+            'major' => ['required', 'string', 'in:AKL,TKJ,BID'],
+            'class' => ['required', 'string'],
+            ]);
+
+            //Tambahkan Data ke Database
+            $student = new Student();
+            $student->nis = $request->nis;
+            $student->name = $request->name;
+            $student->gender = $request->gender;
+            $student->major = $request->major;
+            $student->class = $request->class;
+            $student->save();
+
+            //Handle if success
+            return redirect()->route('students.index');
     }
 
     public function update(string $id)

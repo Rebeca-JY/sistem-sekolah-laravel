@@ -19,16 +19,14 @@ Route::get('/', function () {
 Route::name('students.')->prefix('students')->group(function () {
 
     Route::get('/', [StudentController::class, 'index'])->name('index');
-
     
     Route::get('/{id}', [StudentController::class, 'show'])->name('show')->whereNumber('id');
 
     Route::get('/create', [StudentController::class, 'create'])->name('create');
 
-
     Route::get('/{id}/edit', [StudentController::class, 'edit'])->name('edit');
 
-    Route::post('/store', [StudentController::class, 'store'])->name('store');
+    Route::post('/', [StudentController::class, 'store'])->name('store');
 
     Route::put('/{id}', [StudentController::class, 'update'])->name('update');
 
