@@ -18,14 +18,14 @@ Route::get('/', function () {
 });
 
 //Autentication
-Route::get('/login', [AuthController::class, 'loginView'])->name('login-view');
-Route::post('/login', [AuthController::class, 'loginPost'])->name('login-post');
-Route::get('/register', [AuthController::class, 'registerView'])->name('register-view');
-Route::post('/register', [AuthController::class, 'registerPost'])->name('register-post');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/login', [AuthController::class, 'loginView'])->name('login-view')->middleware('guest');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login-post')->middleware('guest');
+Route::get('/register', [AuthController::class, 'registerView'])->name('register-view')->middleware('guest');
+Route::post('/register', [AuthController::class, 'registerPost'])->name('register-post')->middleware('guest');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 
-Route::name('students.')->prefix('students')->group(function () {
+Route::name('students.')->middleware(['role:teacher,student','auth'])->prefix('students')->group(function () {
 
     Route::get('/', [StudentController::class, 'index'])->name('index');
     
@@ -42,7 +42,7 @@ Route::name('students.')->prefix('students')->group(function () {
     Route::delete('/{student}', [StudentController::class, 'destroy'])->name('destroy');
 });
 
-Route::name('teachers.')->prefix('teachers')->group(function () {
+Route::name('teachers.')->middleware(['role:teacher','auth'])->prefix('teachers')->group(function () {
 
     Route::get('/', [TeacherController::class, 'index'])->name('index');
 
@@ -59,7 +59,7 @@ Route::name('teachers.')->prefix('teachers')->group(function () {
     Route::delete('/{id}', [TeacherController::class, 'destroy'])->name('destroy');
 });
 
-Route::name('classes.')->prefix('classes')->group(function () {
+Route::name('classes.')->middleware(['role:teacher','auth'])->prefix('classes')->group(function () {
 
     Route::get('/', IndexController::class)->name('index');
 
@@ -77,7 +77,7 @@ Route::name('classes.')->prefix('classes')->group(function () {
 });
 
 
-Route::name('majors.')->prefix('majors')->group(function () {
+Route::name('majors.')->middleware(['role:teacher','auth'])->prefix('majors')->group(function () {
 
     Route::get('/', [MajorController::class, 'index'])->name('index');
 
